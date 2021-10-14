@@ -1,0 +1,65 @@
+
+schema {
+    query: Query
+    mutation: Mutation
+
+}
+type Query{
+    all: [Book]
+    book(bookId:String):Book
+#    review(bookId:String):[Review]
+#    author(authorId:String):Author
+#    reviews:[Review]
+#    authors:Author
+}
+type Mutation{
+    createBook(bookId:String,title:String,authorName:String, year:Int,edition:String,language:String,extension:String,pages:Int,description:String,cover:String,authorId:String):BookResponse
+    updateBook(bookId:String,title:String,authorName:String, year:Int,edition:String,language:String,extension:String,pages:Int,description:String,cover:String):String
+#    addReview(bookId:String,reviewerName:String,comment:String,reviewId:Int):ReviewResponse
+#    addAuthor(name:String,authorId:String,age:Int,streetName:String,streetNumber:Int,pincode:Int):String
+}
+
+type Book{
+    bookId:String
+    title:String
+    authorName:String
+    year:Int
+    edition:String
+    language:String
+    extension:String
+    pages:Int
+    description:String
+    cover:String
+    authorId:String
+    review:[Review]
+    author:Author
+#  review(bookId:String):[Review]
+
+}
+type BookResponse{
+    message:String
+    book:Book
+#    author:[Author]
+}
+
+type ReviewResponse{
+    message:String
+    review:Review
+}
+
+type Review {
+    bookId:String
+    reviewId:Int
+    reviewerName:String
+    comment:String
+    datetimestamp:String
+}
+type Author {
+    authorId:String
+    name:String
+#   bookId:String
+    age:Int
+    streetName:String
+    streetNumber:Int
+    pincode:Int
+}
